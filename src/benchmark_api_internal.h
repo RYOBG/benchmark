@@ -1,7 +1,7 @@
 #ifndef BENCHMARK_API_INTERNAL_H
 #define BENCHMARK_API_INTERNAL_H
 
-#include "benchmark/benchmark_api.h"
+#include "benchmark/benchmark.h"
 
 #include <cmath>
 #include <iosfwd>
@@ -17,7 +17,7 @@ struct Benchmark::Instance {
   std::string name;
   Benchmark* benchmark;
   ReportMode report_mode;
-  std::vector<int> arg;
+  std::vector<int64_t> arg;
   TimeUnit time_unit;
   int range_multiplier;
   bool use_real_time;
@@ -25,6 +25,7 @@ struct Benchmark::Instance {
   BigO complexity;
   BigOFunc* complexity_lambda;
   UserCounters counters;
+  const std::vector<Statistics>* statistics;
   bool last_benchmark_instance;
   int repetitions;
   double min_time;
